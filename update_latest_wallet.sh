@@ -5,14 +5,13 @@ if [[ $UID != 0 ]]; then
 fi
 
 killall whitecoin-qt
-cd ~
 mkdir /tmp/wc_update
 cd /tmp/wc_update
 git clone https://github.com/Whitecoin-org/Whitecoin.git Whitecoin
 cd Whitecoin
 qmake
 make
-rm -rf /usr/bin/whitecoin-qt
+rm -f /usr/bin/whitecoin-qt
 cp whitecoin-qt /usr/bin/
 chmod 777 /usr/bin/whitecoin-qt
 cd ~
