@@ -5,6 +5,10 @@ if [[ $UID != 0 ]]; then
 fi
 
 killall whitecoin-qt
+sudo apt-get install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools \
+    build-essential libboost-dev libboost-system-dev \
+    libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
+    libssl-dev libdb++-dev libminiupnpc-dev libqrencode-dev
 mkdir /tmp/wc_update
 cd /tmp/wc_update
 git clone https://github.com/Whitecoin-org/Whitecoin.git Whitecoin
