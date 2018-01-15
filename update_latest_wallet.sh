@@ -13,6 +13,7 @@ mkdir /tmp/wc_update
 cd /tmp/wc_update
 git clone https://github.com/Whitecoin-org/Whitecoin.git Whitecoin
 cd Whitecoin
+git checkout tags/v2.2.0.0
 qmake
 make
 rm -f /usr/bin/whitecoin-qt
