@@ -11,9 +11,19 @@ sudo apt-get -y install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-too
     libssl-dev libdb++-dev libminiupnpc-dev libqrencode-dev
 mkdir /tmp/wc_update
 cd /tmp/wc_update
+
+git clone https://github.com/glassechidna/zxing-cpp.git
+cd zxing-cpp && mkdir build && cd build
+export CXXFLAGS="-fPIC"
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+make && sudo make install
+
 git clone https://github.com/Whitecoin-org/Whitecoin.git Whitecoin
 cd Whitecoin
-git checkout tags/v2.2.0.0
+
+git fetch --tags
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git checkout $latestTag
 qmake
 make
 rm -f /usr/bin/whitecoin-qt
